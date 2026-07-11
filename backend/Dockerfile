@@ -14,4 +14,6 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Shell form (not exec/JSON form) so ${PORT} is expanded at container start.
+# Railway injects PORT dynamically; falls back to 8000 for local docker-compose.
+CMD uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
