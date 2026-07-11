@@ -21,3 +21,5 @@ COPY templates/default.conf.template /etc/nginx/templates/default.conf.template
 ENV PORT=80
 EXPOSE 80
 CMD sh -c 'echo "=== Resolved nginx config (PORT=$PORT) ==="; cat /etc/nginx/conf.d/default.conf; echo "==="; nginx -g "daemon off;"'
+COPY templates/default.conf.template /etc/nginx/templates/default.conf.template
+RUN cat /etc/nginx/templates/default.conf.template
