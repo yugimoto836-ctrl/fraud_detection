@@ -39,3 +39,6 @@ services:
 
 volumes:
   pgdata:
+
+environment:
+  - NGINX_WORKER_PROCESSES=2
