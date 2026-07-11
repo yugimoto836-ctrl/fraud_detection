@@ -1,0 +1,18 @@
+{
+  "dataset": {
+    "total_transactions": 284807,
+    "fraud_transactions": 492,
+    "fraud_rate_pct": 0.1727
+  },
+  "model": {
+    "algorithm": "XGBoost (supervised) + Isolation Forest (secondary signal)",
+    "deployed_threshold": 0.97,
+    "precision": 0.856,
+    "recall": 0.749,
+    "pr_auc": 0.808,
+    "test_set_size": 142404,
+    "fraud_caught": 167,
+    "fraud_missed": 56,
+    "false_alarms": 28
+  }
+}
