@@ -20,6 +20,6 @@ COPY templates/default.conf.template /etc/nginx/templates/default.conf.template
 # Railway injects PORT dynamically; default here covers local docker-compose.
 ENV PORT=80
 EXPOSE 80
-CMD sh -c 'echo "=== Resolved nginx config (PORT=$PORT) ==="; cat /etc/nginx/conf.d/default.conf; echo "==="; nginx -g "daemon off;"'
+CMD ["sh", "-c", "envsubst '${PORT}' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && echo '=== FINAL CONFIG ===' && cat /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
 COPY templates/default.conf.template /etc/nginx/templates/default.conf.template
 RUN cat /etc/nginx/templates/default.conf.template
